@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sicily — May 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --tufo: #D4C89A;
+            --olive: #4A5530;
+            --nero: #19170F;
+            --clay: #A0421E;
+            --clay-light: #C45A32;
+            --paper: #F6F4ED;
+            --paper-warm: #F0EDE3;
+            --sea: #1B4352;
+            --stone: #B8B0A0;
+            --shadow: rgba(25, 23, 15, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: #E8E4DA;
+            color: var(--nero);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        .page {
+            max-width: 520px;
+            margin: 0 auto;
+            background: var(--paper);
+            min-height: 100vh;
+            box-shadow: 0 0 60px rgba(0,0,0,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ---- HEADER ---- */
+        .header {
+            position: relative;
+            height: 560px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            overflow: hidden;
+        }
+        .header-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to top, rgba(15,12,8,0.92) 0%, rgba(15,12,8,0.4) 40%, rgba(15,12,8,0.15) 100%),
+                /* HEADER IMAGE — Replace the URL below with your own */
+                url('https://unsplash.com/photos/a-person-floating-in-a-body-of-water-pFyj7p_Fsnc') center/cover no-repeat;
+            transition: transform 12s ease-out;
+        }
+        .header:hover .header-bg { transform: scale(1.04); }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        .header-tag {
+            display: inline-block;
+            border: 1px solid rgba(212, 200, 154, 0.4);
+            padding: 0.3rem 0.9rem;
+            margin-bottom: 1.2rem;
+            backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.04);
+        }
+        .header-tag span {
+            font-family: 'Jost', sans-serif;
+            font-size: 9px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--tufo);
+            font-weight: 500;
+        }
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 400;
+            color: #fff;
+            line-height: 0.95;
+        }
+        .header .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.6rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.5rem;
+        }
+        .header .subtitle {
+            font-family: 'Jost', sans-serif;
+            color: rgba(255,255,255,0.45);
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-top: 1.4rem;
+        }
+
+        /* ---- DATES STRIP ---- */
+        .dates-strip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.6rem 2rem;
+            background: var(--nero);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .dates-strip .sep { color: var(--tufo); opacity: 0.4; }
+
+        /* ---- INTRO ---- */
+        .intro {
+            padding: 3rem 2.2rem 2.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .intro p {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.85;
+            font-weight: 300;
+            max-width: 420px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .intro p + p { margin-top: 1rem; }
+        .intro .intro-emphasis {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--nero);
+            font-weight: 400;
+            display: block;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        .name-input-wrap {
+            margin-top: 2.5rem;
+            position: relative;
+        }
+        .name-input {
+            width: 100%;
+            text-align: center;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background: transparent;
+            padding: 0.6rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--clay);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .name-input::placeholder { color: #ccc; font-style: italic; }
+        .name-input:focus { border-bottom-color: var(--clay); }
+        .name-label {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-top: 0.6rem;
+        }
+
+        /* ---- SECTIONS ---- */
+        .course {
+            padding: 3.5rem 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .course.alt { background: var(--paper-warm); }
+        .course-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .course-tag {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--clay);
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--clay);
+            display: inline-block;
+        }
+        .course-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            font-weight: 400;
+            margin-top: 0.8rem;
+            line-height: 1.1;
+        }
+        .course-sub {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* ---- RADIO CARDS ---- */
+        .radio-card { cursor: pointer; display: block; margin-bottom: 0.75rem; }
+        .radio-card input { display: none; }
+        .radio-card .card {
+            border: 1px solid #e0ddd5;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        .radio-card .card:hover { border-color: #bbb; }
+        .radio-card input:checked + .card {
+            border-color: var(--clay);
+            background: #FFFBF8;
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+        .radio-card input:checked + .card .dot {
+            background: var(--clay);
+            border-color: var(--clay);
+            transform: scale(1);
+        }
+        .card-text h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        .card-text p {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.25rem;
+            font-weight: 300;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1.5px solid #ccc;
+            background: transparent;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            transform: scale(0.8);
+        }
+
+        /* ---- DATE SELECTION CARDS ---- */
+        .date-card { cursor: pointer; display: block; margin-bottom: 0.75rem; }
+        .date-card input { display: none; }
+        .date-card .date-wrap {
+            border: 1px solid #e0ddd5;
+            padding: 1.5rem 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        .date-card .date-wrap:hover { border-color: #bbb; }
+        .date-card input:checked + .date-wrap {
+            border-color: var(--sea);
+            background: #F7FAFB;
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+        .date-card input:checked + .date-wrap .date-dot {
+            background: var(--sea);
+            border-color: var(--sea);
+        }
+        .date-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+        }
+        .date-info .date-detail {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 0.2rem;
+            font-weight: 300;
+        }
+        .date-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1.5px solid #ccc;
+            background: transparent;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        /* ---- WINE CARDS ---- */
+        .wine-card { cursor: pointer; display: block; margin-bottom: 2rem; }
+        .wine-card input { display: none; }
+        .wine-card .wine-wrap {
+            border: 1px solid #e0ddd5;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: #fff;
+        }
+        .wine-card .wine-wrap:hover { box-shadow: 0 8px 30px var(--shadow); }
+        .wine-card input:checked + .wine-wrap {
+            border-color: var(--clay);
+            box-shadow: 0 12px 40px rgba(160, 66, 30, 0.1);
+        }
+        .wine-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(25%);
+            transition: all 0.6s;
+        }
+        .wine-card:hover .wine-img { filter: grayscale(0%); }
+        .wine-card input:checked + .wine-wrap .wine-img { filter: grayscale(0%); }
+        .wine-body { padding: 1.8rem; }
+        .wine-body .wine-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+        .wine-body h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: 400;
+        }
+        .wine-badge {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border: 1px solid #ddd;
+            padding: 0.2rem 0.5rem;
+            color: #888;
+        }
+        .wine-body > p {
+            font-size: 0.8rem;
+            color: #777;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .wine-for {
+            display: block;
+            margin-top: 0.8rem;
+            font-size: 0.7rem;
+            color: var(--clay);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+        .divider-or {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #ccc;
+            letter-spacing: 0.2em;
+            margin: 0.5rem 0;
+        }
+        .wine-card-artisan input:checked + .wine-wrap {
+            border-color: var(--olive);
+            box-shadow: 0 12px 40px rgba(74, 85, 48, 0.1);
+        }
+
+        /* ---- CHECKBOX CARDS ---- */
+        .check-card { cursor: pointer; display: block; margin-bottom: 0.75rem; }
+        .check-card input { display: none; }
+        .check-card .card-row {
+            border: 1px solid #e0ddd5;
+            background: #fff;
+            padding: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+        .check-card .card-row:hover { border-color: #bbb; box-shadow: 0 4px 12px var(--shadow); }
+        .check-card input:checked + .card-row {
+            border-color: var(--olive);
+            background: #FAFDF6;
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+        .check-card input:checked + .card-row .check-mark {
+            opacity: 1;
+            color: var(--olive);
+        }
+        .card-thumb {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            flex-shrink: 0;
+            filter: grayscale(15%);
+        }
+        .check-card input:checked + .card-row .card-thumb { filter: grayscale(0%); }
+        .card-info { flex: 1; padding: 0.2rem 0; }
+        .card-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .card-info p {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 0.3rem;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+        .check-mark {
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        /* ---- FOOD GRID ---- */
+        .food-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+        .food-card { cursor: pointer; }
+        .food-card input { display: none; }
+        .food-card .food-wrap {
+            border: 1px solid #e0ddd5;
+            background: #fff;
+            padding: 1.8rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .food-card .food-wrap:hover { border-color: var(--tufo); box-shadow: 0 4px 12px var(--shadow); }
+        .food-card input:checked + .food-wrap {
+            border-color: var(--clay);
+            background: #FFFBF8;
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+        .food-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        .food-card:hover .food-emoji,
+        .food-card input:checked + .food-wrap .food-emoji { filter: grayscale(0%); }
+        .food-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .food-where {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #aaa;
+            margin-top: 0.25rem;
+        }
+
+        /* ---- LOGISTICS ---- */
+        .logistics { padding: 3.5rem 2rem; background: var(--paper-warm); }
+        .select-wrap { position: relative; margin-bottom: 2rem; }
+        .select-label {
+            display: block;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 0.8rem;
+        }
+        .select-field {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: #fff;
+            border: 1px solid #e0ddd5;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--nero);
+            outline: none;
+            appearance: none;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .select-field:focus { border-color: var(--clay); }
+        .select-arrow {
+            position: absolute;
+            right: 1rem;
+            bottom: 1.1rem;
+            pointer-events: none;
+            color: #999;
+        }
+        .textarea-field {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: #fff;
+            border: 1px solid #e0ddd5;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--nero);
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+        .textarea-field::placeholder { color: #ccc; }
+        .textarea-field:focus { border-color: var(--clay); }
+
+        /* ---- SUBMIT ---- */
+        .submit-btn {
+            width: 100%;
+            background: var(--nero);
+            color: #fff;
+            border: none;
+            padding: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            letter-spacing: 0.05em;
+            transition: background 0.3s;
+            margin-top: 2.5rem;
+        }
+        .submit-btn:hover { background: #333; }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .submit-btn .arrow { transition: transform 0.3s; }
+        .submit-btn:hover .arrow { transform: translateX(4px); }
+
+        /* ---- SUCCESS ---- */
+        .success-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--paper);
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            animation: fadeUp 0.6s ease-out;
+        }
+        .success-overlay.show { display: flex; }
+        .success-emoji {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+        .success-overlay h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+        .success-overlay .success-sub {
+            color: #888;
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .success-line {
+            width: 60px;
+            height: 1px;
+            background: var(--clay);
+            margin: 2.5rem auto;
+        }
+        .success-note {
+            font-size: 0.7rem;
+            color: #aaa;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        /* ---- COST SECTION ---- */
+        .cost-section {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            background: #fff;
+        }
+        .cost-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--nero);
+        }
+        .cost-per {
+            font-size: 0.7rem;
+            color: #999;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+        .cost-note {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-top: 0.8rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ---- RSVP BANNER ---- */
+        .rsvp-banner {
+            padding: 1.5rem 2rem;
+            background: var(--sea);
+            text-align: center;
+        }
+        .rsvp-banner p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+        .rsvp-banner span { color: var(--tufo); font-weight: 500; }
+
+        /* ---- LOADER ---- */
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* ---- ANIMATIONS ---- */
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /*
+        =============================================
+        IMAGE REPLACEMENT GUIDE
+        =============================================
+        To swap any image, find the matching label
+        and replace the URL between the quotes.
+
+        HEADER IMAGE:
+          Search this file for: HEADER IMAGE
+
+        WINE — THE VOLCANO:
+          Search for: WINE-VOLCANO IMAGE
+
+        WINE — THE ARTISANS:
+          Search for: WINE-ARTISANS IMAGE
+
+        ACTIVITY THUMBNAILS:
+          Search for: THUMB-LIDO
+          Search for: THUMB-CRUISE
+          Search for: THUMB-BOAT
+          Search for: THUMB-RAGUSA
+          Search for: THUMB-VENDICARI
+          Search for: THUMB-ORTIGIA
+
+        Use any public image URL from Unsplash, 
+        Google Photos (shared link), etc.
+        =============================================
+        */
+
+        @media (max-width: 540px) {
+            .page { max-width: 100%; }
+            .header h1 { font-size: 3.8rem; }
+            .header .tagline { font-size: 1.3rem; }
+            .course { padding: 2.5rem 1.2rem; }
+            .intro { padding: 2.5rem 1.5rem 2rem; }
+            .logistics { padding: 2.5rem 1.5rem; }
+            .dates-strip { gap: 0.8rem; font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    const GOOGLE_SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+</script>
+
+<div class="page">
+
+    <!-- ======== HEADER ======== -->
+    <header class="header">
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <div class="header-tag"><span>James's 40th Birthday</span></div>
+            <h1>Sicily</h1>
+            <p class="tagline">Il Menu Siciliano</p>
+            <p class="subtitle">Val di Noto · May 2026</p>
+        </div>
+    </header>
+
+    <!-- ======== DATES STRIP ======== -->
+    <div class="dates-strip">
+        <span>Flying into Catania Airport</span>
+        <span class="sep">✦</span>
+        <span>5–6 Nights</span>
+        <span class="sep">✦</span>
+        <span>May 2026</span>
+    </div>
+
+    <!-- ======== INTRO ======== -->
+    <div class="intro">
+        <p>I'm turning 40 this year. Lorenza and I want to celebrate with you.</p>
+        <p>When Lorenza and I toured Sicily in 2022, we fell hardest for the Val di Noto region — baroque hill towns, wild nature reserves, crystalline water, amphora wines, and a kind of beauty that feels both ancient and alive. We've been wanting an excuse to go back and actually settle in. This is it.</p>
+        <p>The plan: A week in southeastern Sicily. We rent a private masseria (traditional Sicilian farmhouse villa) with a pool as home base near Noto. Think high ceilings, stone walls, long dinners outside, late nights by the water. No resort vibe, no schedules — just us.</p>
+        <p>From there, we explore. Some days we'll move. Some days we can just chill. The goal is culture and adventure when we want it, laziness when we don't.</p>
+        <span class="intro-emphasis">Select your preferences from this menu to help plan the fun and get your wanderlust juices flowing.</span>
+        <div class="name-input-wrap">
+            <input type="text" id="guest-name" class="name-input" placeholder="Sign Your Name">
+            <span class="name-label">Required to submit</span>
+        </div>
+    </div>
+
+    <!-- ======== COST ======== -->
+    <div class="cost-section">
+        <div class="cost-amount">~$1,100</div>
+        <div class="cost-per">Per person · excluding flights</div>
+        <div class="cost-note">Depending on how many join the party.<br>Covers villa, car rentals, most meals &amp; activities.</div>
+    </div>
+
+    <form id="menu-form" onsubmit="submitMenu(event)">
+
+        <!-- ======== ANTIPASTI: DATE SELECTION ======== -->
+        <section class="course alt">
+            <div class="course-header">
+                <span class="course-tag">Antipasti</span>
+                <h2 class="course-title">The Dates</h2>
+                <p class="course-sub">Which week works for you?</p>
+            </div>
+
+            <label class="date-card">
+                <input type="radio" name="dates" value="May 12-18">
+                <div class="date-wrap">
+                    <div class="date-info">
+                        <h3>May 12 – 18</h3>
+                        <span class="date-detail">Monday arrival → Sunday departure</span>
+                    </div>
+                    <div class="date-dot"></div>
+                </div>
+            </label>
+
+            <label class="date-card">
+                <input type="radio" name="dates" value="May 16-21">
+                <div class="date-wrap">
+                    <div class="date-info">
+                        <h3>May 16 – 21</h3>
+                        <span class="date-detail">Friday arrival → Wednesday departure</span>
+                    </div>
+                    <div class="date-dot"></div>
+                </div>
+            </label>
+
+            <label class="date-card">
+                <input type="radio" name="dates" value="Either works">
+                <div class="date-wrap">
+                    <div class="date-info">
+                        <h3>Either Works for Me</h3>
+                        <span class="date-detail">I'm flexible — your call</span>
+                    </div>
+                    <div class="date-dot"></div>
+                </div>
+            </label>
+        </section>
+
+        <!-- ======== PRIMI: MORNING VIBE ======== -->
+        <section class="course">
+            <div class="course-header">
+                <span class="course-tag">Primi</span>
+                <h2 class="course-title">The Morning Vibe</h2>
+                <p class="course-sub">How do we start the day?</p>
+            </div>
+
+            <label class="radio-card">
+                <input type="radio" name="vibe" value="Slow">
+                <div class="card">
+                    <div class="card-text">
+                        <h3>The Slow Start</h3>
+                        <p>Coffee by the pool. Don't talk to me before 11am.</p>
+                    </div>
+                    <div class="dot"></div>
+                </div>
+            </label>
+
+            <label class="radio-card">
+                <input type="radio" name="vibe" value="Explorer">
+                <div class="card">
+                    <div class="card-text">
+                        <h3>The Explorer</h3>
+                        <p>Wheels up at 9am. Beat the heat. See the towns.</p>
+                    </div>
+                    <div class="dot"></div>
+                </div>
+            </label>
+
+            <label class="radio-card">
+                <input type="radio" name="vibe" value="Depends">
+                <div class="card">
+                    <div class="card-text">
+                        <h3>Depends on the Night Before</h3>
+                        <p>I'll let the wine decide.</p>
+                    </div>
+                    <div class="dot"></div>
+                </div>
+            </label>
+        </section>
+
+        <!-- ======== VINO: WINE DUEL ======== -->
+        <section class="course alt">
+            <div class="course-header">
+                <span class="course-tag">Vino</span>
+                <h2 class="course-title">The Wine Duel</h2>
+                <p class="course-sub">Choose your fighter.</p>
+            </div>
+
+            <!-- The Volcano -->
+            <label class="wine-card">
+                <input type="radio" name="wine" value="Etna">
+                <div class="wine-wrap">
+                    <!-- WINE-VOLCANO IMAGE — Replace URL below -->
+                    <div class="wine-img" style="background-image: url('https://www.montetrigona.com/')"></div>
+                    <div class="wine-body">
+                        <div class="wine-header">
+                            <h3>The Volcano</h3>
+                            <span class="wine-badge">Mt. Etna</span>
+                        </div>
+                        <p>A 2-hour drive north to active lava flows. We hike the black ash, then drink structured, elegant Nerello Mascalese at altitude.</p>
+                        <span class="wine-for">Ideal for: Hikers &amp; Terroir Nerds</span>
+                    </div>
+                </div>
+            </label>
+
+            <div class="divider-or">— or —</div>
+
+            <!-- The Artisans -->
+            <label class="wine-card wine-card-artisan">
+                <input type="radio" name="wine" value="Artisans">
+                <div class="wine-wrap">
+                    <!-- WINE-ARTISANS IMAGE — Replace URL below -->
+                    <div class="wine-img" style="background-image: url('https://vinous.com/articles/gulfi-nero-d-avola-nerosanlore-2001-2015-jan-2020')"></div>
+                    <div class="wine-body">
+                        <div class="wine-header">
+                            <h3>The Artisans</h3>
+                            <span class="wine-badge">Vittoria</span>
+                        </div>
+                        <p>We stay local and visit the cult legends. Rigorous farming, ancient methods (clay amphorae), and profound results. Think: COS, Occhipinti, or Gulfi.</p>
+                        <span class="wine-for">Ideal for: Somms &amp; Bottle Hunters</span>
+                    </div>
+                </div>
+            </label>
+        </section>
+
+        <!-- ======== SECONDI: MAIN EVENTS ======== -->
+        <section class="course">
+            <div class="course-header">
+                <span class="course-tag">Secondi</span>
+                <h2 class="course-title">The Main Events</h2>
+                <p class="course-sub">Select as many as you want.</p>
+            </div>
+
+            <label class="check-card">
+                <input type="checkbox" name="activities" value="Lido San Lorenzo">
+                <div class="card-row">
+                    <!-- THUMB-LIDO — Replace src URL below -->
+                    <img src="https://www.aguaresort.it/wp-content/uploads/2024/04/Beach-Carosello2.png" alt="Beach">
+                    <div class="card-info">
+                        <h3>Lido San Lorenzo</h3>
+                        <p>The lux beach day. Reserved sunbeds, umbrella service, cold Prosecco. Zero hiking required, but you could try flyboarding.</p>
+                    </div>
+                    <div class="check-mark">✓</div>
+                </div>
+            </label>
+
+            <label class="check-card">
+                <input type="checkbox" name="activities" value="Sunset Cruise">
+                <div class="card-row">
+                    <!-- THUMB-CRUISE — Replace src URL below -->
+                    <img src="https://ilbolive.unipd.it/sites/default/files/2025-08/clipboard.jpg" class="card-thumb" alt="Sunset boat">
+                    <div class="card-info">
+                        <h3>Ortigia Sunset Cruise</h3>
+                        <p>A captained Gozzo boat around the island. Sea caves, champagne, and views of the Duomo from the water.</p>
+                    </div>
+                    <div class="check-mark">✓</div>
+                </div>
+            </label>
+
+            <label class="check-card">
+                <input type="checkbox" name="activities" value="Self Drive Boat">
+                <div class="card-row">
+                    <!-- THUMB-BOAT — Replace src URL below -->
+                    <img src="https://images.unsplash.com/photo-1653060565540-c891923bfd27?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-thumb" alt="Small boat">
+                    <div class="card-info">
+                        <h3>The "Self Drive" Boat</h3>
+                        <p>Marzamemi. We rent small wooden boats. No skipper. We anchor, swim, and drink wine.</p>
+                    </div>
+                    <div class="check-mark">✓</div>
+                </div>
+            </label>
+
+            <label class="check-card">
+                <input type="checkbox" name="activities" value="Ragusa Ibla">
+                <div class="card-row">
+                    <!-- THUMB-RAGUSA — Replace src URL below -->
+                    <img src="https://accommodation-sicily.com/wp-content/uploads/2022/11/sette-cappelli-with-terrace-and-stunning-view-over-1.jpg"card-thumb" alt="Hilltop town">
+                    <div class="card-info">
+                        <h3>The Vertical City</h3>
+                        <p>Ragusa Ibla at sunset. The view is mind-bending. Dinner at a terrace trattoria or 2-star Duomo.</p>
+                    </div>
+                    <div class="check-mark">✓</div>
+                </div>
+            </label>
+
+            <label class="check-card">
+                <input type="checkbox" name="activities" value="Vendicari">
+                <div class="card-row">
+                    <!-- THUMB-VENDICARI — Replace src URL below -->
+                    <img src="https://www.wishsicily.com/storage/site-pages/imported/24_vendicari_calamosche.jpg" class="card-thumb" alt="Wild beach">
+                    <div class="card-info">
+                        <h3>Vendicari Wild Beach</h3>
+                        <p>Nature reserve. No sunbeds, no services — just empty sand, flamingos, and Roman ruins. Bring a towel.</p>
+                    </div>
+                    <div class="check-mark">✓</div>
+                </div>
+            </label>
+
+            <label class="check-card">
+                <input type="checkbox" name="activities" value="Syracuse & Ortigia">
+                <div class="card-row">
+                    <!-- THUMB-ORTIGIA — Replace src URL below -->
+                    <img src="https://as2.ftcdn.net/v2/jpg/02/48/35/03/1000_F_248350310_iWsCc5jsveQUHSk7KOATjsMGemmcbqbA.jpg" class="card-thumb" alt="Ancient ruins">
+                    <div class="card-info">
+                        <h3>Syracuse &amp; Ortigia</h3>
+                        <p>Greek temples, Caravaggio in the cathedral, seafood, spritz in piazzas — and incredible shopping on the island's winding streets. Ceramics, linens, and leather you won't find at home.</p>
+                    </div>
+                    <div class="check-mark">✓</div>
+                </div>
+            </label>
+        </section>
+
+        <!-- ======== CONTORNI: FOOD ======== -->
+        <section class="course alt">
+            <div class="course-header">
+                <span class="course-tag">Contorni</span>
+                <h2 class="course-title">The Table</h2>
+                <p class="course-sub">Prioritize your calories.</p>
+            </div>
+
+            <div class="food-grid">
+                <label class="food-card">
+                    <input type="checkbox" name="food" value="Ricotta">
+                    <div class="food-wrap">
+                        <span class="food-emoji">🧀</span>
+                        <span class="food-name">Ricotta "Calda"</span>
+                        <span class="food-where">Warm at the Dairy</span>
+                    </div>
+                </label>
+                <label class="food-card">
+                    <input type="checkbox" name="food" value="Granita">
+                    <div class="food-wrap">
+                        <span class="food-emoji">🍧</span>
+                        <span class="food-name">Almond Granita</span>
+                        <span class="food-where">Caffè Sicilia</span>
+                    </div>
+                </label>
+                <label class="food-card">
+                    <input type="checkbox" name="food" value="Nonna Feast">
+                    <div class="food-wrap">
+                        <span class="food-emoji">🍝</span>
+                        <span class="food-name">Nonna's Feast</span>
+                        <span class="food-where">Private Chef @ Villa</span>
+                    </div>
+                </label>
+                <label class="food-card">
+                    <input type="checkbox" name="food" value="Pizza Night">
+                    <div class="food-wrap">
+                        <span class="food-emoji">🍕</span>
+                        <span class="food-name">Pizza Night</span>
+                        <span class="food-where">Wood-fired Oven</span>
+                    </div>
+                </label>
+                <label class="food-card">
+                    <input type="checkbox" name="food" value="Seafood Market">
+                    <div class="food-wrap">
+                        <span class="food-emoji">🐟</span>
+                        <span class="food-name">Market &amp; Cook</span>
+                        <span class="food-where">Ortigia Fish Market</span>
+                    </div>
+                </label>
+                <label class="food-card">
+                    <input type="checkbox" name="food" value="Cannoli Crawl">
+                    <div class="food-wrap">
+                        <span class="food-emoji">🤌</span>
+                        <span class="food-name">Cannoli Crawl</span>
+                        <span class="food-where">Noto Side Streets</span>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+        <!-- ======== DOLCE: LOGISTICS ======== -->
+        <section class="logistics">
+            <div class="course-header">
+                <span class="course-tag">Dolce</span>
+                <h2 class="course-title">Final Details</h2>
+            </div>
+
+            <div class="select-wrap">
+                <label class="select-label">Driving Comfort</label>
+                <select id="driving-skill" class="select-field">
+                    <option value="Passenger">I am strictly a Passenger Princess.</option>
+                    <option value="Automatic">I can drive — Automatic only.</option>
+                    <option value="Manual">I can drive Manual in Sicily. Bring it on.</option>
+                </select>
+                <div class="select-arrow">
+                    <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+
+            <div class="select-wrap">
+                <label class="select-label">Anything else?</label>
+                <textarea id="notes" rows="4" class="textarea-field" placeholder="Dietary needs, wine requests, room preferences, birthday roast material..."></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="submit-btn">
+                <span>Submit Order</span>
+                <span class="arrow">→</span>
+            </button>
+        </section>
+
+    </form>
+
+    <!-- ======== RSVP BANNER ======== -->
+    <div class="rsvp-banner">
+        <p>RSVP by <span>March 15, 2026</span> · Questions? Text James.</p>
+    </div>
+
+    <!-- ======== SUCCESS ======== -->
+    <div id="success-message" class="success-overlay">
+        <span class="success-emoji">🍋</span>
+        <h2 class="serif">Grazie.</h2>
+        <p class="success-sub">Your order has been sent to the kitchen.</p>
+        <div class="success-line"></div>
+        <p class="success-note">See you in Sicily.</p>
+    </div>
+
+</div>
+
+<script>
+function submitMenu(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submit-btn');
+    const originalHTML = btn.innerHTML;
+
+    const name = document.getElementById('guest-name').value.trim();
+    if (!name) {
+        document.getElementById('guest-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById('guest-name').focus();
+        document.getElementById('guest-name').style.borderBottomColor = 'var(--clay)';
+        return;
+    }
+
+    btn.innerHTML = '<div class="loader"></div>';
+    btn.disabled = true;
+
+    const formData = {
+        name: name,
+        dates: document.querySelector('input[name="dates"]:checked')?.value || 'Not Selected',
+        vibe: document.querySelector('input[name="vibe"]:checked')?.value || 'Not Selected',
+        wine: document.querySelector('input[name="wine"]:checked')?.value || 'Not Selected',
+        activities: Array.from(document.querySelectorAll('input[name="activities"]:checked')).map(cb => cb.value),
+        food: Array.from(document.querySelectorAll('input[name="food"]:checked')).map(cb => cb.value),
+        driving: document.getElementById('driving-skill').value,
+        notes: document.getElementById('notes').value,
+        submitted: new Date().toISOString()
+    };
+
+    if (GOOGLE_SCRIPT_URL === "PASTE_YOUR_WEB_APP_URL_HERE") {
+        setTimeout(() => showSuccess(formData), 1200);
+    } else {
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(() => showSuccess(formData))
+        .catch(error => {
+            console.error('Error:', error);
+            btn.innerHTML = originalHTML;
+            btn.disabled = false;
+        });
+    }
+}
+
+function showSuccess(data) {
+    document.getElementById('menu-form').style.display = 'none';
+    document.querySelector('.intro').style.display = 'none';
+    document.querySelector('.cost-section').style.display = 'none';
+    document.getElementById('success-message').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    console.log('Submitted:', data);
+}
+</script>
+
+</body>
+</html>
